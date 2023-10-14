@@ -3,6 +3,7 @@
 void BookStore::AddBook(Book *book)
 {
     books.push_back(book);
+    UpdateDataFile();
 }
 
 Book *BookStore::GetBook(int id)
@@ -28,5 +29,11 @@ void BookStore::DeleteBook(int id)
     {
         int idx = std::distance(books.begin(), it);
         books.erase(books.begin() + idx);
+        UpdateDataFile();
     }
+}
+
+void BookStore::UpdateDataFile()
+{
+    fileManager.WriteFile(books);
 }

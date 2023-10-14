@@ -14,6 +14,9 @@ std::string Manager::CreateBook()
         std::getline(std::cin, description);
 
         Book *book = new Book(Book::currentId, title, description);
+
+        store.AddBook(book);
+
         system("clear");
     }
     catch (const std::exception &e)
@@ -30,14 +33,17 @@ std::string Manager::ShowBooks()
     if (store.GetBooks().size() == 0)
         return "There are no books in store";
 
-    std::string res = "[";
+    nlohmann::json jsonBooks = nlohmann::json::array();
+    nlohmann::json j;
+    Utils utils = Utils();
+
     for (auto book : store.GetBooks())
     {
-        res += PrintBook(book);
+        j = utils.ToJson(*book);
+        jsonBooks.push_back(j);
     }
-    res += "]";
 
-    return res;
+    return jsonBooks.dump();
 }
 
 std::string Manager::GetBook()
@@ -98,13 +104,9 @@ std::string Manager::DeleteBook()
 
 std::string Manager::PrintBook(Book *book)
 {
-    std::string res;
-    res += "\n";
-    res += "\t{\n";
-    res += "\t\tid: " + std::to_string(book->GetId()) + "\n";
-    res += "\t\ttitle: " + book->GetTitle() + "\n";
-    res += "\t\tdescription: " + book->GetDescription() + "\n\t}";
-    res += "\n";
+    Utils utils = Utils();
 
-    return res;
+    nlohmann::json j = utils.ToJson(*book);
+
+    return j.dump();
 }
