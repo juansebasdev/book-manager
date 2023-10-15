@@ -13,13 +13,13 @@ jobs:
 
       - name: Install GTest
         run: |
-          sudo apt update && /
-          sudo apt -y upgrade && /
-          sudo apt-get install -y libgtest-dev cmake clang && /
-          cd /usr/src/gtest && /
-          sudo mkdir build && cd build && /
-          sudo cmake .. && /
-          sudo make && /
+          sudo apt update && \
+          sudo apt -y upgrade && \
+          sudo apt-get install -y libgtest-dev cmake clang && \
+          cd /usr/src/gtest && \
+          sudo mkdir build && cd build && \
+          sudo cmake .. && \
+          sudo make && \
           sudo cp ./lib/*.a /usr/lib
 
       - name: Install Dependencies
