@@ -30,7 +30,8 @@ jobs:
           cd ./test && \
           mkdir out && cd out && \
           cmake .. && \
-          make
+          make && \
+          ls
 
       - name: Run Tests
         run: cd ./test && \
