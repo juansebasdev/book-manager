@@ -33,4 +33,5 @@ jobs:
           make
 
       - name: Run Tests
-        run: ./Test
+        run: cd ./test && \
+             ./Test
