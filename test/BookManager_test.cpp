@@ -13,11 +13,6 @@ TEST(BookTest, Create)
     ASSERT_EQ(book.GetDescription(), description);
 }
 
-TEST(BookStoreTest, Save)
-{
-    BookStore bookStore;
-}
-
 int main(int argc, char **argv)
 {
     testing::InitGoogleTest(&argc, argv);
