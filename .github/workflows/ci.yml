@@ -34,5 +34,4 @@ jobs:
           ls
 
       - name: Run Tests
-        run: cd ./test && \
-             ./Test
+        run: sh ./Test
