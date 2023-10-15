@@ -1,0 +1,36 @@
+name: Test Book Manager
+
+on: [push]
+
+jobs:
+  test-application:
+    name: Test book manager
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install GTest
+        run: |
+          sudo apt update && /
+          sudo apt -y upgrade && /
+          sudo apt-get install -y libgtest-dev cmake clang && /
+          cd /usr/src/gtest && /
+          sudo mkdir build && cd build && /
+          sudo cmake .. && /
+          sudo make && /
+          sudo cp ./lib/*.a /usr/lib
+
+      - name: Install Dependencies
+        run: sudo apt-get install nlohmann-json3-dev
+
+      - name: Build Tests
+        run: |
+          cd ./test && \
+          mkdir out && cd out && \
+          cmake .. && \
+          make
+
+      - name: Run Tests
+        run: ./Test

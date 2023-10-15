@@ -32,6 +32,7 @@
 
 # Executables
 build/
+out/
 *.exe
 *.out
 *.app
