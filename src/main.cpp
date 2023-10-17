@@ -5,7 +5,7 @@
 
 const std::string Menu = "1. Add Book\n2. Show Books\n3. Get Book\n4. Delete Book\n5. Exit\n";
 
-int main()
+void main()
 {
     Manager manager = Manager();
     int op = 0;
@@ -43,7 +43,6 @@ int main()
             std::cout << "See you later!" << std::endl;
             std::cout << "\n";
             exit(0);
-            break;
 
         default:
             std::cout << "Invalid Input!!!" << std::endl;
@@ -52,6 +51,4 @@ int main()
 
         std::cout << "\n";
     }
-
-    return 0;
 }
