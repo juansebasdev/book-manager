@@ -92,8 +92,6 @@ std::string Manager::DeleteBook()
         default:
             return "You have cancelled the operation";
         }
-
-        system("clear");
     }
     catch (const std::exception &e)
     {

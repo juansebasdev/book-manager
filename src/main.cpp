@@ -43,7 +43,6 @@ int main()
             std::cout << "See you later!" << std::endl;
             std::cout << "\n";
             exit(0);
-            break;
 
         default:
             std::cout << "Invalid Input!!!" << std::endl;
@@ -52,6 +51,4 @@ int main()
 
         std::cout << "\n";
     }
-
-    return 0;
 }
