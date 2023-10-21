@@ -5,7 +5,7 @@
 
 const std::string Menu = "1. Add Book\n2. Show Books\n3. Get Book\n4. Delete Book\n5. Exit\n";
 
-int main()
+void main()
 {
     Manager manager = Manager();
     int op = 0;
