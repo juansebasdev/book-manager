@@ -8,7 +8,7 @@
 class BookStore
 {
 private:
-    std::vector<Book *> books;
+    std::vector<std::shared_ptr<Book>> books;
     FileManager fileManager;
     void UpdateDataFile();
 
@@ -19,8 +19,8 @@ public:
         books = fileManager.ReadFile();
     }
 
-    void AddBook(Book *book);
-    Book *GetBook(int id);
-    std::vector<Book *> GetBooks() { return books; }
+    void AddBook(std::shared_ptr<Book> book);
+    std::shared_ptr<Book> GetBook(int id);
+    std::vector<std::shared_ptr<Book>> GetBooks() { return books; }
     void DeleteBook(int id);
 };

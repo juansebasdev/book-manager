@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.24)
 project(BookManager)
 
 set(CMAKE_CXX_COMPILER clang++)
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED 11)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED 14)
 
 file(GLOB SRC
      "./src/*.cpp"

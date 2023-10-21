@@ -13,7 +13,7 @@ std::string Manager::CreateBook()
         std::cout << "Add a description for the book" << std::endl;
         std::getline(std::cin, description);
 
-        Book *book = new Book(Book::currentId, title, description);
+        std::shared_ptr<Book> book = std::make_unique<Book>(Book(Book::currentId, title, description));
 
         store.AddBook(book);
 
@@ -39,7 +39,7 @@ std::string Manager::ShowBooks()
 
     for (auto book : store.GetBooks())
     {
-        j = utils.ToJson(*book);
+        j = utils.ToJson(book);
         jsonBooks.push_back(j);
     }
 
@@ -53,7 +53,7 @@ std::string Manager::GetBook()
     {
         std::cout << "Digit the id of the book you would like to get: ";
         std::cin >> id;
-        Book *book = store.GetBook(id);
+        std::shared_ptr<Book> book = store.GetBook(id);
 
         if (book != nullptr)
             return PrintBook(book);
@@ -76,7 +76,7 @@ std::string Manager::DeleteBook()
         std::cout << "Digit the id of the book you would like to remove: ";
         std::cin >> id;
 
-        Book *book = store.GetBook(id);
+        std::shared_ptr<Book> book = store.GetBook(id);
 
         std::cout << "Are you sure to delete " << book->GetTitle() << " with id " << book->GetId() << "? (y/n)";
         std::cin >> answer;
@@ -100,11 +100,11 @@ std::string Manager::DeleteBook()
     }
 }
 
-std::string Manager::PrintBook(Book *book)
+std::string Manager::PrintBook(std::shared_ptr<Book> book)
 {
     Utils utils = Utils();
 
-    nlohmann::json j = utils.ToJson(*book);
+    nlohmann::json j = utils.ToJson(book);
 
     return j.dump();
 }

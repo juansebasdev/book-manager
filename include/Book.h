@@ -13,7 +13,7 @@ public:
     static int currentId;
 
 public:
-    Book(){};
+    Book() = default;
     Book(int id, std::string title, std::string description) : title(title), description(description), id(id) { currentId++; }
 
     std::string GetTitle() { return this->title; }
