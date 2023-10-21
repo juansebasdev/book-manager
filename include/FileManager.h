@@ -14,6 +14,6 @@ private:
     std::string FILENAME = "data.json";
 
 public:
-    void WriteFile(std::vector<Book *> books);
-    std::vector<Book *> ReadFile();
+    void WriteFile(std::vector<std::shared_ptr<Book>> books);
+    std::vector<std::shared_ptr<Book>> ReadFile();
 };

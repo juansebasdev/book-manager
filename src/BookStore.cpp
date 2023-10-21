@@ -1,14 +1,14 @@
 #include "BookStore.h"
 
-void BookStore::AddBook(Book *book)
+void BookStore::AddBook(std::shared_ptr<Book> book)
 {
     books.push_back(book);
     UpdateDataFile();
 }
 
-Book *BookStore::GetBook(int id)
+std::shared_ptr<Book> BookStore::GetBook(int id)
 {
-    auto it = std::find_if(books.begin(), books.end(), [&id](Book *book)
+    auto it = std::find_if(books.begin(), books.end(), [&id](std::shared_ptr<Book> &book)
                            { return book->GetId() == id; });
 
     if (it != books.end())
@@ -22,7 +22,7 @@ Book *BookStore::GetBook(int id)
 
 void BookStore::DeleteBook(int id)
 {
-    auto it = std::find_if(books.begin(), books.end(), [&id](Book *book)
+    auto it = std::find_if(books.begin(), books.end(), [&id](std::shared_ptr<Book> &book)
                            { return book->GetId() == id; });
 
     if (it != books.end())
